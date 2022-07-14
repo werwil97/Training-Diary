@@ -125,26 +125,43 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Dodaj trening</h1>
-<%--                <ol class="breadcrumb mb-4">--%>
-<%--                    <li class="breadcrumb-item active">Dashboard</li>--%>
-<%--                </ol>--%>
-<%--                <div class="card-body">--%>
+                <h1 class="mt-4">Moje dane</h1>
+                <%--                <ol class="breadcrumb mb-4">--%>
+                <%--                    <li class="breadcrumb-item active">Dashboard</li>--%>
+                <%--                </ol>--%>
+                <%--                <div class="card-body">--%>
 
                 <div class="card-header">
-                    <form:form method="post" modelAttribute="training">
-<%--                        <div class="form-group">--%>
+                    <form:form method="post" modelAttribute="user">
+                        <form:hidden path="id"/>
+                        <form:hidden path="password"/>
                         <div class="card-body">
-                            <label for="name">Nazwa treningu</label>
-                            <form:input path="name" name="name"/>
+                            <label for="firstName">Imię</label>
+                            <form:input path="firstName" name="firstName"/>
                         </div>
                         <div class="card-body">
-                            <label for="description">Opis treningu</label>
-                            <form:input path="description" name="description"/>
+                            <label for="lastName">Nazwisko</label>
+                            <form:input path="lastName" name="lastName"/>
                         </div>
                         <div class="card-body">
-                            <label for="type">Typ treningu</label>
-                            <form:input path="type" name="type"/>
+                            <label for="email">Email</label>
+                            <form:input path="email" name="email"/>
+                        </div>
+                        <div class="card-body">
+                            <label for="gender">Kobieta</label>
+                            <form:checkbox path="gender" name="gender" value="Kobieta"/>
+                        </div>
+                        <div class="card-body">
+                            <label for="gender">Mężczyzna</label>
+                            <form:checkbox path="gender" name="gender" value="Mężczyzna"/>
+                        </div>
+                        <div class="card-body">
+                            <label for="email">Waga[kg]</label>
+                            <form:input path="weight" name="weight"/>
+                        </div>
+                        <div class="card-body">
+                            <label for="growth">Wzrost[cm]</label>
+                            <form:input path="growth" name="growth"/>
                         </div>
                         <button type="submit" class="btn btn-primary">Zapisz</button>
                     </form:form>
@@ -164,3 +181,4 @@
 <script src="js/datatables-simple-demo.js"></script>
 </body>
 </html>
+

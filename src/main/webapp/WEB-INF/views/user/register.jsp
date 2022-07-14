@@ -32,15 +32,16 @@
 <%--                                            </div>--%>
                                             <div class="form-floating mb-3 mb-md-0">
                                                 <form:input path="username" class="form-control" id="username" type="text" placeholder="Dodaj nazwę użytkownika" />
-                                                <label for="username">username</label>
+                                                <form:errors path="username"/>
+                                                <label for="username">Nazwa użytkownika</label>
                                             </div>
                                         </div>
-<%--                                        <div class="col-md-6">--%>
-<%--                                            <div class="form-floating">--%>
-<%--                                                <form:input path="lastName" class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />--%>
-<%--                                                <label for="inputLastName">Last name</label>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <form:input path="password" class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
+                                                <label for="inputPassword">Hasło</label>
+                                            </div>
+                                        </div>
                                     </div>
 <%--                                    <div class="form-floating mb-3">--%>
 <%--                                        <form:input path="email" class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />--%>
@@ -49,8 +50,8 @@
                                     <div class="row mb-3">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3 mb-md-0">
-                                                <form:input path="password" class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                                                <label for="inputPassword">Password</label>
+<%--                                                <form:input path="password" class="form-control" id="inputPassword" type="password" placeholder="Create a password" />--%>
+<%--                                                <label for="inputPassword">Password</label>--%>
                                             </div>
                                         </div>
                                         <div class="col-md-6">

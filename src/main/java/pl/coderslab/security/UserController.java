@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import pl.coderslab.training.Training;
 
 @Controller
 public class UserController {
@@ -42,6 +44,19 @@ public class UserController {
     public String list(Model model,@AuthenticationPrincipal CurrentUser customUser) {
         model.addAttribute("user", userRepository.findByUsername(customUser.getUser().getUsername()));
         return "user/details";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String editUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        model.addAttribute("user", userRepository.findByUsername(customUser.getUser().getUsername()));
+        return "user/edit";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String edit(User user,@RequestParam String username) {
+        user.setUsername(username);
+        userRepository.save(user);
+        return "redirect:/details";
     }
 
 }

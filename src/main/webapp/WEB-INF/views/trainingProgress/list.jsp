@@ -26,7 +26,7 @@
                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="<c:url  value="/details"/>">Moje konto</a></li>
-<%--                <li><a class="dropdown-item" href="#!">Activity Log</a></li>--%>
+                <%--                <li><a class="dropdown-item" href="#!">Activity Log</a></li>--%>
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>
@@ -125,29 +125,37 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Dodaj trening</h1>
-<%--                <ol class="breadcrumb mb-4">--%>
-<%--                    <li class="breadcrumb-item active">Dashboard</li>--%>
-<%--                </ol>--%>
-<%--                <div class="card-body">--%>
+                <h1 class="mt-4"><c:out value="${training.name}"/></h1>
+                <div class="card-body">
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                        <div class="dataTable-container">
+                            <table id="datatablesSimple" class="dataTable-table">
+                                <thead>
+                                <tr>
+                                    <th data-sortable="" style="width: 29.2667%;">
+                                        <a href="#" class="dataTable-sorter">Tydzień</a>
+                                    </th>
+                                    <th data-sortable="" style="width: 15.3796%;">
+                                        <a href="#" class="dataTable-sorter">Ćwiczenie</a>
+                                    </th>
+                                    <th data-sortable="" style="width: 15.3796%;">
+                                        <a href="#" class="dataTable-sorter">Ciężar[kg]</a>
+                                    </th>
+                                </tr>
+                                </thead>
 
-                <div class="card-header">
-                    <form:form method="post" modelAttribute="training">
-<%--                        <div class="form-group">--%>
-                        <div class="card-body">
-                            <label for="name">Nazwa treningu</label>
-                            <form:input path="name" name="name"/>
+                                <tbody>
+                                <c:forEach var="trainingProgress" items="${trainingsProgress}">
+                                    <tr>
+                                        <td>${trainingProgress.week}</td>
+                                        <td>${trainingProgress.exercise.name}</td>
+                                        <td>${trainingProgress.kg}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="card-body">
-                            <label for="description">Opis treningu</label>
-                            <form:input path="description" name="description"/>
-                        </div>
-                        <div class="card-body">
-                            <label for="type">Typ treningu</label>
-                            <form:input path="type" name="type"/>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Zapisz</button>
-                    </form:form>
+                    </div>
                 </div>
             </div>
         </main>
@@ -164,3 +172,4 @@
 <script src="js/datatables-simple-demo.js"></script>
 </body>
 </html>
+

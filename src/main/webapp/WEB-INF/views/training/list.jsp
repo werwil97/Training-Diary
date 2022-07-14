@@ -2,11 +2,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/header.jsp" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand ps-3" href="index.html">Zbuduj siłę</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
@@ -24,12 +25,19 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                <li><a class="dropdown-item" href="<c:url  value="/details"/>">Moje konto</a></li>
+<%--                <li><a class="dropdown-item" href="#!">Activity Log</a></li>--%>
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li>
+                    <a>
+                        <form action="<c:url value="/logout"/>" method="post">
+                            <input class="dropdown-item" href="<c:url value="/user/logout"/>" type="submit" value="Wyloguj">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        </form>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>
@@ -109,8 +117,8 @@
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                Start Bootstrap
+                <div class="small">Witaj <security:authentication property="principal.username"/>!
+                </div>
             </div>
         </nav>
     </div>
@@ -134,34 +142,14 @@
                                 <td>${training.name}</td>
                                 <td>${training.description}</td>
                                 <td>${training.type}</td>
-                                <td><a href="<c:url  value="/training/edit?id=${training.id}"/> ">Edytuj</a></td>
-                                <td><a href="<c:url  value="/training/delete?id=${training.id}"/> ">Usuń</a></td>
-                                <td><a href="<c:url  value="/exerciseDetails/list?id=${training.id}"/> ">Szczegóły</a></td>
-                                <td><a href="<c:url  value="/exerciseDetails/add?id=${training.id}"/> ">Dodaj</a></td>
+                                <td><a class="btn btn-primary" href="<c:url  value="/training/edit?id=${training.id}"/> ">Edytuj</a></td>
+                                <td><a class="btn btn-primary" href="<c:url  value="/training/delete?id=${training.id}"/> ">Usuń</a></td>
+                                <td><a class="btn btn-primary" href="<c:url  value="/exerciseDetails/list?id=${training.id}"/> ">Szczegóły</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table></div><div class="dataTable-bottom"><div class="dataTable-info">Showing 1 to 10 of 57 entries</div><nav class="dataTable-pagination"><ul class="dataTable-pagination-list"><li class="active"><a href="#" data-page="1">1</a></li><li class=""><a href="#" data-page="2">2</a></li><li class=""><a href="#" data-page="3">3</a></li><li class=""><a href="#" data-page="4">4</a></li><li class=""><a href="#" data-page="5">5</a></li><li class=""><a href="#" data-page="6">6</a></li><li class="pager"><a href="#" data-page="2">›</a></li></ul></nav></div></div>
                 </div>
-<%--                <div class="card-header">--%>
-<%--                    <table>--%>
-<%--                        <tr>--%>
-<%--                            <th>Nazwa</th>--%>
-<%--                            <th>Opis</th>--%>
-<%--                            <th>Typ</th>--%>
-<%--                            <th>OPTION</th>--%>
-<%--                        </tr>--%>
-<%--                        <c:forEach var="training" items="${trainings}">--%>
-<%--                        <tr>--%>
-<%--                            <td>${training.name}</td>--%>
-<%--                            <td>${training.description}</td>--%>
-<%--                            <td>${training.type}</td>--%>
-<%--                            <td><a href="<c:url  value="/training/edit?id=${training.id}"/> ">Edytuj</a></td>--%>
-<%--                            <td><a href="<c:url  value="/training/delete?id=${training.id}"/> ">Usuń</a></td>--%>
-<%--                            <td><a href="<c:url  value="/training/details?id=${training.id}"/> ">Szczegóły</a></td>--%>
-<%--                        </tr>--%>
-<%--                        </c:forEach>--%>
-<%--                </div>--%>
             </div>
         </main>
         <%@ include file="/footer.jsp" %>

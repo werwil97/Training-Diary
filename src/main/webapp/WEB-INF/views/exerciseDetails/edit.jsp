@@ -126,27 +126,33 @@
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Dodaj trening</h1>
-<%--                <ol class="breadcrumb mb-4">--%>
-<%--                    <li class="breadcrumb-item active">Dashboard</li>--%>
-<%--                </ol>--%>
-<%--                <div class="card-body">--%>
+                <%--                <ol class="breadcrumb mb-4">--%>
+                <%--                    <li class="breadcrumb-item active">Dashboard</li>--%>
+                <%--                </ol>--%>
+                <%--                <div class="card-body">--%>
 
                 <div class="card-header">
-                    <form:form method="post" modelAttribute="training">
-<%--                        <div class="form-group">--%>
+                    <form:form method="post" modelAttribute="exerciseDetails">
+                        <form:hidden path="id"/>
                         <div class="card-body">
-                            <label for="name">Nazwa treningu</label>
-                            <form:input path="name" name="name"/>
+                            <label for="exerciseCategory">Kategoria</label>
+                            <form:select path="exerciseCategory" items="${exerciseCategories}" name="exerciseCategory"
+                                         itemLabel="name" itemValue="id"/>
                         </div>
                         <div class="card-body">
-                            <label for="description">Opis treningu</label>
-                            <form:input path="description" name="description"/>
+                            <label for="exercise">Ćwiczenie</label>
+                            <form:select path="exercise" items="${exercises}" name="exercise"
+                                         itemLabel="name" itemValue="id"/>
                         </div>
                         <div class="card-body">
-                            <label for="type">Typ treningu</label>
-                            <form:input path="type" name="type"/>
+                            <label for="series">Ilość serii</label>
+                            <form:input path="series" name="series"/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Zapisz</button>
+                        <div class="card-body">
+                            <label for="repetition">Ilość powtórzeń w serii</label>
+                            <form:input path="repetition" name="repetition"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Edytuj</button>
                     </form:form>
                 </div>
             </div>

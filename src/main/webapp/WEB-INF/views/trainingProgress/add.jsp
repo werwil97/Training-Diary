@@ -7,7 +7,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">Zbuduj siłę</a>
+    <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
@@ -26,7 +26,7 @@
                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="<c:url  value="/details"/>">Moje konto</a></li>
-<%--                <li><a class="dropdown-item" href="#!">Activity Log</a></li>--%>
+                <%--                <li><a class="dropdown-item" href="#!">Activity Log</a></li>--%>
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>
@@ -125,26 +125,21 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Dodaj trening</h1>
-<%--                <ol class="breadcrumb mb-4">--%>
-<%--                    <li class="breadcrumb-item active">Dashboard</li>--%>
-<%--                </ol>--%>
-<%--                <div class="card-body">--%>
+                <h1 class="mt-4">Dodaj ciężar do ćwiczenia</h1>
+                <%--                <ol class="breadcrumb mb-4">--%>
+                <%--                    <li class="breadcrumb-item active">Dashboard</li>--%>
+                <%--                </ol>--%>
+                <%--                <div class="card-body">--%>
 
                 <div class="card-header">
-                    <form:form method="post" modelAttribute="training">
-<%--                        <div class="form-group">--%>
+                    <form:form method="post" modelAttribute="trainingProgress">
                         <div class="card-body">
-                            <label for="name">Nazwa treningu</label>
-                            <form:input path="name" name="name"/>
+                            <label for="week">Tydzień</label>
+                            <form:input path="week" name="week"/>
                         </div>
                         <div class="card-body">
-                            <label for="description">Opis treningu</label>
-                            <form:input path="description" name="description"/>
-                        </div>
-                        <div class="card-body">
-                            <label for="type">Typ treningu</label>
-                            <form:input path="type" name="type"/>
+                            <label for="kg">Ciężar[kg]</label>
+                            <form:input path="kg" name="kg"/>
                         </div>
                         <button type="submit" class="btn btn-primary">Zapisz</button>
                     </form:form>

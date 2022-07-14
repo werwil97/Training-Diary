@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/header.jsp" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -24,12 +25,19 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                <li><a class="dropdown-item" href="<c:url  value="/details"/>">Moje konto</a></li>
+<%--                <li><a class="dropdown-item" href="#!">Activity Log</a></li>--%>
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li>
+                    <a>
+                        <form action="<c:url value="/logout"/>" method="post">
+                            <input class="dropdown-item" href="<c:url value="/user/logout"/>" type="submit" value="Wyloguj">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        </form>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>
@@ -109,8 +117,8 @@
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                Start Bootstrap
+                <div class="small">Witaj <security:authentication property="principal.username"/>!
+                </div>
             </div>
         </nav>
     </div>
@@ -125,15 +133,6 @@
 
                 <div class="card-header">
                     <form:form method="post" modelAttribute="exerciseDetails">
-<%--                        <div class="card-body">--%>
-<%--                            <label for="training">Trening</label>--%>
-<%--                            <form:input path="training" item="${training}" itemLabel="name" name="training"/>--%>
-<%--                        </div>--%>
-<%--                        <div class="card-body">--%>
-<%--                            <label for="training">Trening</label>--%>
-<%--                            <form:select path="training" items="${trainings}" name="training"--%>
-<%--                                         itemLabel="name" itemValue="id"/>--%>
-<%--                        </div>--%>
                         <div class="card-body">
                             <label for="exerciseCategory">Kategoria</label>
                             <form:select path="exerciseCategory" items="${exerciseCategories}" name="exerciseCategory"
