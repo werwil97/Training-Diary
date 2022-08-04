@@ -32,7 +32,6 @@
 <%--                                            </div>--%>
                                             <div class="form-floating mb-3 mb-md-0">
                                                 <form:input path="username" class="form-control" id="username" type="text" placeholder="Dodaj nazwę użytkownika" />
-                                                <form:errors path="username"/>
                                                 <label for="username">Nazwa użytkownika</label>
                                             </div>
                                         </div>

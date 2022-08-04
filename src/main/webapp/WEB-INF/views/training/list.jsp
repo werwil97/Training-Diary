@@ -26,14 +26,14 @@
                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="<c:url  value="/details"/>">Moje konto</a></li>
-<%--                <li><a class="dropdown-item" href="#!">Activity Log</a></li>--%>
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>
                 <li>
                     <a>
                         <form action="<c:url value="/logout"/>" method="post">
-                            <input class="dropdown-item" href="<c:url value="/user/logout"/>" type="submit" value="Wyloguj">
+                            <input class="dropdown-item" href="<c:url value="/user/logout"/>" type="submit"
+                                   value="Wyloguj">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </form>
                     </a>
@@ -47,72 +47,9 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="<c:url value="/"/>">
+                    <a class="nav-link" href="<c:url value="/start"/>">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard
-                    </a>
-                    <div class="sb-sidenav-menu-heading">Interface</div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-                       aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Layouts
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                        </nav>
-                    </div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                       aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Pages
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                               data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                               aria-controls="pagesCollapseAuth">
-                                Authentication
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                                 data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="login.html">Login</a>
-                                    <a class="nav-link" href="register.html">Register</a>
-                                    <a class="nav-link" href="password.html">Forgot Password</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                               data-bs-target="#pagesCollapseError" aria-expanded="false"
-                               aria-controls="pagesCollapseError">
-                                Error
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
-                                 data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="401.html">401 Page</a>
-                                    <a class="nav-link" href="404.html">404 Page</a>
-                                    <a class="nav-link" href="500.html">500 Page</a>
-                                </nav>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Charts
-                    </a>
-                    <a class="nav-link" href="tables.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Tables
+                        Start
                     </a>
                 </div>
             </div>
@@ -126,29 +63,42 @@
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Dodane treningi</h1>
-                <%--                <ol class="breadcrumb mb-4">--%>
-                <%--                    <li class="breadcrumb-item active">Dashboard</li>--%>
-                <%--                </ol>--%>
-                <%--                <div class="card-body">--%>
                 <div class="card-body">
-                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"><div class="dataTable-top"><div class="dataTable-dropdown"><label><select class="dataTable-selector"><option value="5">5</option><option value="10" selected="">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select> entries per page</label></div><div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div></div><div class="dataTable-container"><table id="datatablesSimple" class="dataTable-table">
-                        <thead>
-                        <tr><th data-sortable="" style="width: 19.7923%;"><a href="#" class="dataTable-sorter">Nazwa treningu</a></th><th data-sortable="" style="width: 29.2667%;"><a href="#" class="dataTable-sorter">Opis treningu</a></th><th data-sortable="" style="width: 15.3796%;"><a href="#" class="dataTable-sorter">Typ treningu</a></th></tr>
-                        </thead>
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                        <div class="dataTable-container">
+                            <table id="datatablesSimple" class="dataTable-table">
+                                <thead>
+                                <tr>
+                                    <th data-sortable="" style="width: 19.7923%;">
+                                        <a href="#" class="dataTable-sorter">Nazwa treningu</a></th>
+                                    <th data-sortable="" style="width: 29.2667%;">
+                                        <a href="#" class="dataTable-sorter">Opis treningu</a></th>
+                                    <th data-sortable="" style="width: 15.3796%;">
+                                        <a href="#" class="dataTable-sorter">Typ treningu</a></th>
+                                </tr>
+                                </thead>
 
-                        <tbody>
-                        <c:forEach var="training" items="${trainings}">
-                            <tr>
-                                <td>${training.name}</td>
-                                <td>${training.description}</td>
-                                <td>${training.type}</td>
-                                <td><a class="btn btn-primary" href="<c:url  value="/training/edit?id=${training.id}"/> ">Edytuj</a></td>
-                                <td><a class="btn btn-primary" href="<c:url  value="/training/delete?id=${training.id}"/> ">Usuń</a></td>
-                                <td><a class="btn btn-primary" href="<c:url  value="/exerciseDetails/list?id=${training.id}"/> ">Szczegóły</a></td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table></div><div class="dataTable-bottom"><div class="dataTable-info">Showing 1 to 10 of 57 entries</div><nav class="dataTable-pagination"><ul class="dataTable-pagination-list"><li class="active"><a href="#" data-page="1">1</a></li><li class=""><a href="#" data-page="2">2</a></li><li class=""><a href="#" data-page="3">3</a></li><li class=""><a href="#" data-page="4">4</a></li><li class=""><a href="#" data-page="5">5</a></li><li class=""><a href="#" data-page="6">6</a></li><li class="pager"><a href="#" data-page="2">›</a></li></ul></nav></div></div>
+                                <tbody>
+                                <c:forEach var="training" items="${trainings}">
+                                    <tr>
+                                        <td>${training.name}</td>
+                                        <td>${training.description}</td>
+                                        <td>${training.type}</td>
+                                        <td><a class="btn btn-primary"
+                                               href="<c:url  value="/training/edit?id=${training.id}"/> ">Edytuj</a>
+                                        </td>
+                                        <td><a class="btn btn-primary"
+                                               href="<c:url  value="/training/delete?id=${training.id}"/> ">Usuń</a>
+                                        </td>
+                                        <td><a class="btn btn-primary"
+                                               href="<c:url  value="/exerciseDetails/list?id=${training.id}"/> ">Szczegóły</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

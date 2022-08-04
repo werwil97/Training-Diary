@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/header.jsp" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -32,7 +31,8 @@
                 <li>
                     <a>
                         <form action="<c:url value="/logout"/>" method="post">
-                            <input class="dropdown-item" href="<c:url value="/user/logout"/>" type="submit" value="Wyloguj">
+                            <input class="dropdown-item" href="<c:url value="/user/logout"/>" type="submit"
+                                   value="Wyloguj">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </form>
                     </a>
@@ -53,50 +53,23 @@
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Witaj <security:authentication property="principal.username"/>!
-                </div>
+                <div class="small">Logged in as:</div>
+                Start Bootstrap
             </div>
         </nav>
     </div>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Moje dane</h1>
-                <a class="btn btn-primary" href="<c:url value="/edit?username=${user.username}"/>">Dodaj/zmień dane</a>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">   </li>
-                    </ol>
-                <c:out value="Nazwa użytkownika:"/>
+                <h1 class="mt-4">Dodaj kategorię</h1>
                 <div class="card-header">
-                    <c:out value="${user.username}"/>
-                </div>
-                <c:out value="Imię:"/>
-                <div class="card-header">
-                     <c:out value="${user.firstName}"/>
-                </div>
-                <c:out value="Nazwisko:"/>
-                <div class="card-header">
-                        <c:out value="${user.lastName}"/>
-                </div>
-                <c:out value="Email:"/>
-                <div class="card-header">
-                    <c:out value="${user.email}"/>
-                </div>
-                <c:out value="Płeć:"/>
-                <div class="card-header">
-                    <c:out value="${user.gender}"/>
-                </div>
-                <c:out value="Wzrost:"/>
-                <div class="card-header">
-                    <c:out value="${user.growth}"/>
-                </div>
-                <c:out value="Waga:"/>
-                <div class="card-header">
-                    <c:out value="${user.weight}"/>
-                </div>
-                <c:out value="BMI:"/>
-                <div class="card-header">
-                    <c:out value="${user.bmi} ${user.result}"/>
+                    <form:form method="post" modelAttribute="exerciseCategory">
+                        <div class="card-body">
+                            <label for="name">Nazwa kategorii</label>
+                            <form:input path="name" name="name"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Zapisz</button>
+                    </form:form>
                 </div>
             </div>
         </main>
@@ -113,5 +86,3 @@
 <script src="js/datatables-simple-demo.js"></script>
 </body>
 </html>
-
-
